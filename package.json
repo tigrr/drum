@@ -1,7 +1,7 @@
 {
   "name": "drum",
   "version": "0.0.0",
-  "description": "jQuery revolving drum control widget",
+  "description": "Drum is responsive, accessible jQuery revolving drum control plugin to replace a number field or a select menu",
   "main": "jquery.drum.min.js",
   "scripts": {
     "build": "uglifyjs lib/jquery-ui.widget.js src/jquery.watch-drag.js src/jquery.drum.js -o jquery.drum-1.min.js --comments /^!/",
