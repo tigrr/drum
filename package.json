@@ -1,0 +1,36 @@
+{
+  "name": "drum",
+  "version": "0.0.0",
+  "description": "jQuery revolving drum control widget",
+  "main": "jquery.drum.min.js",
+  "scripts": {
+    "build": "uglifyjs lib/jquery-ui.widget.js src/jquery.watch-drag.js src/jquery.drum.js -o jquery.drum-1.min.js --comments /^!/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "jquery-plugin",
+    "drum",
+    "control"
+  ],
+  "author": {
+    "name": "Tigran Sargsyan",
+    "email": "tigran.sn@gmail.com",
+    "url": "https://github.com/tigrr"
+  },
+  "homepage": "https://github.com/tigrr/drum",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tigrr/drum.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tigrr/drum/issues"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "^1.0.4",
+    "grunt-contrib-uglify": "^4.0.1",
+    "load-grunt-tasks": "^5.0.0",
+    "time-grunt": "^2.0.0",
+    "uglify-js": "^3.6.0"
+  }
+}
