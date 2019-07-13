@@ -33,6 +33,15 @@ module.exports = function (grunt) {
 				}
 			}
 		},
+
+		copy: {
+			docs: {
+				files: {
+					'docs/js/': 'jquery.drum.min.js',
+				}
+			}
+		},
+
 		watch: {
 			src: {
 				files: 'src/**/*',
@@ -41,5 +50,5 @@ module.exports = function (grunt) {
 		},
 	});
 
-	grunt.registerTask('build', ['uglify']);
+	grunt.registerTask('build', ['uglify', 'copy']);
 };
