@@ -258,11 +258,11 @@ h2, h3, h4 {
 .container {
 	max-width: 1000px;
 	margin: 0 auto;
+	padding: 0 10px;
 }
 
 .section {
 	padding: 25px 0;
-	margin-bottom: 50px;
 }
 
 .page-header {
@@ -272,7 +272,7 @@ h2, h3, h4 {
 .page-heading {
 	margin-top: 0;
 	padding-top: 20px;
-	padding-bottom: 50px;
+	padding-bottom: 20px;
 	text-align: center;
 }
 
@@ -288,18 +288,33 @@ h2, h3, h4 {
 }
 
 .github-link {
-	position: absolute;
-	top: calc(50% - 1rem);
-	right: 10px;
-	transform: translateY(-50%);
-	display: flex;
-	align-items: center;
+	margin-bottom: 20px;
 	padding: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	background: hsl(0, 0%, 100%);
 	color: hsl(0, 0%, 30%);
 	font-weight: bold;
 	text-decoration: none;
 	background-blend-mode: difference;
+}
+
+@media (min-width: 640px) {
+	.section {
+		margin-bottom: 50px;
+	}
+
+	.page-header {
+		padding-bottom: 50px;
+	}
+
+	.github-link {
+		position: absolute;
+		top: calc(50% - 1rem);
+		right: 10px;
+		transform: translateY(-50%);
+	}
 }
 
 .octicon {
@@ -315,31 +330,14 @@ h2, h3, h4 {
 	background: hsl(0, 0%, 24%);
 }
 
-.use-cont {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-evenly;
-	align-items: center;
-}
-
-.use-example {
-	flex: auto;
-	align-self: stretch;
-}
-
 .use-example > .code {
 	height: 100%;
 }
 
 .use-or {
-	flex: auto;
 	text-align: center;
 	font-size: 3rem;
 	color: var(--clr-prim);
-}
-
-.content {
-
 }
 
 .intro {
@@ -349,8 +347,6 @@ h2, h3, h4 {
 .example-cont {
 	padding: 20px 10px;
 	margin-bottom: 50px;
-	display: flex;
-	flex-wrap: wrap;
 	background: hsl(0, 0%, 95%);
 }
 
@@ -368,6 +364,31 @@ h2, h3, h4 {
 }
 
 @media (min-width: 640px) {
+	.use-cont {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+		align-items: center;
+	}
+
+	.use-example {
+		flex: auto;
+		align-self: stretch;
+	}
+
+	.example-cont {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.example-cont--code-first .example {
+		order: 1;
+	}
+
+	.use-or {
+		flex: auto;
+	}
+
 	.example-code::-webkit-scrollbar {
 		width: 6px;
 	}
