@@ -19,12 +19,12 @@ $.widget('tl.watchDrag', {
 
 	_create: function() {
 		this._resetCoords();
-		this._on(this.element, this._eventsStart);
+		this._on(this.element, {mousedown: this._eventsStart.mousedown, touchstart: this._eventsStart.mousedown});
 	},
 
 	_captureCoords: function(ev) {
-		var x = ev.pageX,
-			y = ev.pageY,
+		var x = ['touchstart', 'touchmove', 'touchend'].indexOf(ev.type) !== -1 ? ev.touches[0].pageX : ev.pageX,
+			y = ['touchstart', 'touchmove', 'touchend'].indexOf(ev.type) !== -1 ? ev.touches[0].pageY : ev.pageY,
 			t = Date.now(),
 			dx = x - this._coords.x,
 			dy = y - this._coords.y,
@@ -46,32 +46,45 @@ $.widget('tl.watchDrag', {
 
 	_resetCoords: function() {
 		this._coords = {
-			x: null,// Mouse left offset relative to the document.
-			y: null,// Mouse top offset relative to the document.
-			t: null// Timestamp in milliseconds
+			x: null, // Pointer left offset relative to the document.
+			y: null, // Pointer top offset relative to the document.
+			t: null, // Timestamp in milliseconds
+			dx: 0, // X change in pointer position from the begining of drag
+			dy: 0, // Y change in pointer position from the begining of drag
+			dt: 0  // Change in time from the begining of drag
 		};
-		this._coords.dx = this._coords.dy = this._coords.dt = 0;
 	},
 
 	_eventsStart: {
 		mousedown: function(ev) {
-			if(ev.which !== 1) return;
+			if(ev.type === 'mousedown' && ev.which !== 1) return;
+
+			ev.preventDefault();
+			ev.stopPropagation();
 
 			this._listenOn = this.options.watchOutside ? $(window) : this.element;
-			this._on(this._listenOn, this._eventsDrag);
+			this._on(this._listenOn, {
+				mousemove: this._eventsDrag.mousemove,
+				touchmove: this._eventsDrag.mousemove,
+				mouseup: this._eventsDrag.mouseup,
+				touchend: this._eventsDrag.mouseup,
+			});
 
 			this._resetCoords();
-			this._coords.x = ev.pageX;
-			this._coords.y = ev.pageY;
-			this._coords.t = Date.now();
+			var coords = this._captureCoords(ev);
+			this._coords.x = coords.x;
+			this._coords.y = coords.y;
+			this._coords.t = coords.t;
 
 			this._trigger('dragstart', ev, this._coords);
 		}
 	},
 
 	_eventsDrag: {
-
 		mousemove: function(ev) {
+			ev.preventDefault();
+			ev.stopPropagation();
+
 			var data = this._captureCoords(ev);
 
 			this._updateCoords(data);
@@ -80,6 +93,9 @@ $.widget('tl.watchDrag', {
 		},
 
 		mouseup: function(ev) {
+			ev.preventDefault();
+			ev.stopPropagation();
+
 			var data = $.extend({}, this._coords);
 
 			if(Date.now() - this._coords.t <= this.options.minDragInterval) {
@@ -88,7 +104,7 @@ $.widget('tl.watchDrag', {
 			} else {
 				data.vx = data.vy = 0;
 			}
-			this._off(this._listenOn, 'mousemove mouseup');
+			this._off(this._listenOn, 'mousemove mouseup touchmove touchend');
 
 			this._trigger('dragend', ev, data);
 		}
