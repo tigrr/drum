@@ -1,6 +1,6 @@
 {
   "name": "drum",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Drum is responsive, accessible jQuery revolving drum control plugin to replace a number field or a select menu",
   "main": "jquery.drum.min.js",
   "scripts": {

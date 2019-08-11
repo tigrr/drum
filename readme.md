@@ -72,6 +72,19 @@ $('.drum').drum('option', {
 | renderItemsNum | integer | 100 | Number of items to render in the drum. If total number of items is more, they will be inserted as the drum rolls closer to the edge. |
 | maxSpinOffset | number | 500 | Maximum offset the drum can spin to after a swipe in pixels |
 
+
+#### Events
+
+| Event | Description |
+| ----- | ----------- |
+| dragstart | Triggers when dragging has started on the drum (similar to mousedown) |
+| drag | Triggers during drag (similar to mousemove) |
+| dragend | Triggers when dragging has ended (similar to mouseup) |
+| change | Triggers when the drum has finished revolving and we have a new value |
+
+
+#### Styling
+
 To customize widget's appearance, you can style its underlying HTML elements with CSS.
 The elements are:
 
