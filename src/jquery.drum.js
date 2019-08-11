@@ -117,7 +117,7 @@ $.widget('tl.drum', {
 					that._stopRevolving(ev);
 				}
 				that._drumEl.removeClass('dragging');
-				that._trigger('dragstend', ev, data);
+				that._trigger('dragend', ev, data);
 			}
 		}).keydown(function(e) {
 			if(e.altKey || e.ctrlKey || e.shiftKey || e.metaKey) return;
