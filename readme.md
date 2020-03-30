@@ -73,7 +73,31 @@ $('.drum').drum('option', {
 | maxSpinOffset | number | 500 | Maximum offset the drum can spin to after a swipe in pixels |
 
 
-#### Events
+### Events
+
+You can listen to events by passing a callback at the initialization:
+
+```js
+$(".drum").drum({
+	max: 100,
+	value: 13,
+	change: function(event, data) {
+		console.log('Value: '+ data.value);
+	}
+});
+```
+
+or attach a listener to the "`drumchange`" event at a later point:
+
+```js
+$(".drum").on('drumchange', function(event, data) {
+	console.log('Value: '+ data.value);
+});
+```
+
+In both cases the callback receives data object with the new value.
+
+#### All events
 
 | Event | Description |
 | ----- | ----------- |
@@ -83,10 +107,10 @@ $('.drum').drum('option', {
 | change | Triggers when the drum has finished revolving and we have a new value |
 
 
-#### Styling
+### Styling
 
 To customize widget's appearance, you can style its underlying HTML elements with CSS.
-The elements are:
+The elements' classes are:
 
 | Class               | Description |
 | ------------------- | ----------- |
