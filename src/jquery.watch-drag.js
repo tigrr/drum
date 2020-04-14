@@ -82,9 +82,6 @@ $.widget('tl.watchDrag', {
 
 	_eventsDrag: {
 		mousemove: function(ev) {
-			ev.preventDefault();
-			ev.stopPropagation();
-
 			var data = this._captureCoords(ev);
 
 			this._updateCoords(data);

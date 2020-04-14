@@ -80,6 +80,7 @@ $.widget('tl.drum', {
 
 		this.element.watchDrag({
 			dragstart: function(ev, data) {
+				that.element.focus();
 				if(that._state === 'revolving') {
 					that._scrollToOffset(that._getCurrentOffset());
 					that._refillValuesAroundView();
