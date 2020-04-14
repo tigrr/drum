@@ -10,6 +10,7 @@
 
 /* jshint globalstrict: true, jquery: true, browser: true */
 
+(function($) {
 
 $.widget('tl.watchDrag', {
 	options: {
@@ -107,3 +108,5 @@ $.widget('tl.watchDrag', {
 		}
 	}
 });
+
+}(jQuery));
