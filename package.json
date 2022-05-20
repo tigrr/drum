@@ -1,14 +1,20 @@
 {
-  "name": "drum",
-  "version": "0.1.2",
+  "name": "drum-control",
+  "version": "0.1.4",
   "description": "Drum is responsive, accessible jQuery revolving drum control plugin to replace a number field or a select menu",
   "main": "jquery.drum.min.js",
   "scripts": {
-    "build": "uglifyjs lib/jquery-ui.widget.js src/jquery.watch-drag.js src/jquery.drum.js -o jquery.drum-1.min.js --comments /^!/",
+    "build": "grunt build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "files": [
+    "lib",
+    "src",
+    "jquery.drum.*"
+  ],
   "keywords": [
     "jquery-plugin",
+    "ecosystem:jquery",
     "drum",
     "control"
   ],
@@ -27,11 +33,14 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "grunt": "^1.0.4",
+    "grunt": "^1.4.1",
     "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-uglify": "^4.0.1",
-    "load-grunt-tasks": "^5.0.0",
+    "grunt-contrib-uglify": "^5.0.1",
+    "load-grunt-tasks": "^5.1.0",
     "time-grunt": "^2.0.0",
-    "uglify-js": "^3.6.0"
+    "uglify-js": "^3.15.3"
+  },
+  "dependencies": {
+    "jquery": "*"
   }
 }

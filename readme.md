@@ -9,7 +9,26 @@
 
 ## Getting Started
 
-### As jQuery plugin
+### Using npm
+
+Navigate to your project directory and install the Drum module
+```shell
+$ npm install --save drum-control
+```
+
+Given you have this element in your html:
+```html
+<div class="drum"></div>
+```
+
+In your script:
+
+```js
+import 'drum-control'
+
+$('.drum').drum();
+```
+### Manually downloading the script
 
 Download the minified [production version][jquery-min]
 

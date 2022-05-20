@@ -24,7 +24,8 @@ module.exports = function (grunt) {
 				banner: '<%= banner %>\n',
 				output: {
 					comments: /^!/
-				}
+				},
+				sourceMap: true,
 			},
 			dist: {
 				files: {
